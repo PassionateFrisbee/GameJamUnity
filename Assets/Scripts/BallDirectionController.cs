@@ -9,7 +9,7 @@ public class BallDirectionController : MonoBehaviour
     public GameObject dottedLineStart;
     public GameObject mouse;
     public LineRenderer dottedLineRenderer;
-    private Quaternion start_rotation = Quaternion.AngleAxis(0, Vector3.forward);
+
     private float timer;
     private float spriteGap = 0.1f;
     private bool timer_start = false;
@@ -25,7 +25,6 @@ public class BallDirectionController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.rotation = start_rotation;
         rb = GetComponent<Rigidbody2D>();
         dottedLineRenderer.enabled = true;
     }
@@ -42,11 +41,6 @@ public class BallDirectionController : MonoBehaviour
         // Vector2 mouse_direction = mouse_pos - dottedLine_pos; **possible raycasting
         Vector2 ball_direction = mouse_pos - ball_pos;
         ball_direction.Normalize();
-
-        float angle_rad = Mathf.Atan2(ball_direction.y, ball_direction.x);
-        float angle_deg = Mathf.Rad2Deg * angle_rad - 90;
-
-        transform.rotation = Quaternion.AngleAxis(angle_deg, Vector3.forward);
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
