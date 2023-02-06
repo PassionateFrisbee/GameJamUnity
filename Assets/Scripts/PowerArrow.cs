@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PowerArrow : MonoBehaviour
 {
-    public Sprite[] frames;
+    //public Sprite[] frames;
     public float framesPerSecond = 5;
     SpriteRenderer sr;
-    int currentFrameIndex = 0;
+    int currentFrameIndex = 5;
     public float frameTimer;
     public float magnitude;
 
@@ -20,19 +20,19 @@ public class PowerArrow : MonoBehaviour
 
     void Update()
     {
-        frameTimer -= Time.deltaTime;
+        //frameTimer -= Time.deltaTime;
 
-        if (frameTimer <= 0)
-        {
-            currentFrameIndex++;
-            if (currentFrameIndex >= frames.Length)
-            {
-                Destroy(gameObject);
-                return;
-            }
-            frameTimer = (1f / framesPerSecond);
-            sr.sprite = frames[currentFrameIndex];
-        }
+        //if (frameTimer <= 0)
+        //{
+        //    currentFrameIndex++;
+        //    if (currentFrameIndex >= frames.Length)
+        //    {
+        //        Destroy(gameObject);
+        //        return;
+        //    }
+        //    frameTimer = (1f / framesPerSecond);
+        //    sr.sprite = frames[currentFrameIndex];
+        //}
 
         magnitude = currentFrameIndex;
     }
