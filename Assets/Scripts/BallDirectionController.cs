@@ -9,18 +9,13 @@ public class BallDirectionController : MonoBehaviour
     public GameObject mouse;
     public LineRenderer dottedLineRenderer;
     private Quaternion start_rotation = Quaternion.AngleAxis(0, Vector3.forward);
-    public float smooth = 2.0f;
-    public float speed = 2.0f;
-    private bool isLocked = false;
 
     private Rigidbody2D rb;
 
-    private bool ready = false;
+    private bool direction_ready = false;
     public float magnitude = 25;
-    public float scaleFactor = 10;
+    public float scaleFactor = 2;
     public GameObject speedBars;
-    PowerArrow arrow;
-    public Vector3 barPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -52,19 +47,16 @@ public class BallDirectionController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Debug.Log("Direction vector: " + ball_direction);
-            ready = true;
-            //barPosition = new Vector3(0, -4, 0) + transform.position;
-            //Instantiate(speedBars, barPosition, Quaternion.identity);
+            direction_ready = true;
+            Instantiate(speedBars, new Vector3(-7.24f, 4.47f, 0.0f), Quaternion.identity);
+        }
+
+        if (direction_ready == true && Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            magnitude = speedBars.GetComponent<PowerArrow>().getMagnitude() * scaleFactor;
             Vector2 movement = new Vector2(ball_direction.x * magnitude, ball_direction.y * magnitude);
             rb.velocity = movement;
         }
-
-        //else if (ready == true)
-        //{
-        //    //magnitude = arrow.getMagnitude() * scaleFactor;
-        //    rb.velocity = ball_direction * magnitude;
-        //}
 
     }
 
@@ -85,9 +77,4 @@ public class BallDirectionController : MonoBehaviour
         dottedLineRenderer.SetPosition(1, mouse.transform.position);
     }
 
-    void SmoothLookAt(Vector3 direction)
-    {
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * smooth);
-    }
 }

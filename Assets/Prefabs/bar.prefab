@@ -97,7 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fdb25ab9213b4c22910d16071ce5326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frames: []
   framesPerSecond: 5
   frameTimer: 0
-  magnitude: 0
+  magnitude: 5

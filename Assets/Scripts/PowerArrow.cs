@@ -15,7 +15,7 @@ public class PowerArrow : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         frameTimer = (1f / framesPerSecond);
-        currentFrameIndex = 0;
+        //currentFrameIndex = 0;
     }
 
     void Update()
@@ -33,7 +33,10 @@ public class PowerArrow : MonoBehaviour
         //    frameTimer = (1f / framesPerSecond);
         //    sr.sprite = frames[currentFrameIndex];
         //}
-
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            Destroy(gameObject);
+        }
         magnitude = currentFrameIndex;
     }
 
