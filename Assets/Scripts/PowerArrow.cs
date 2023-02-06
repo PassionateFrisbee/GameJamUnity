@@ -4,44 +4,33 @@ using UnityEngine;
 
 public class PowerArrow : MonoBehaviour
 {
-    //public Sprite[] frames;
-    public float framesPerSecond = 5;
+    public Sprite[] frames;
     SpriteRenderer sr;
-    int currentFrameIndex = 5;
-    public float frameTimer;
-    public float magnitude;
+    int currentFrameIndex;
+    private float timer;
+    private float spriteGap = 0.4f;
 
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        frameTimer = (1f / framesPerSecond);
-        //currentFrameIndex = 0;
+        currentFrameIndex = 0;
     }
 
     void Update()
     {
-        //frameTimer -= Time.deltaTime;
 
-        //if (frameTimer <= 0)
-        //{
-        //    currentFrameIndex++;
-        //    if (currentFrameIndex >= frames.Length)
-        //    {
-        //        Destroy(gameObject);
-        //        return;
-        //    }
-        //    frameTimer = (1f / framesPerSecond);
-        //    sr.sprite = frames[currentFrameIndex];
-        //}
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            sr.sprite = frames[currentFrameIndex % frames.Length];
+            timer = spriteGap;
+            currentFrameIndex++;
+        }
+        
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             Destroy(gameObject);
         }
-        magnitude = currentFrameIndex;
-    }
-
-    public float getMagnitude()
-    {
-        return magnitude;
+        
     }
 }

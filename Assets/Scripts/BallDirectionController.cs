@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 using static UnityEngine.GraphicsBuffer;
 
 public class BallDirectionController : MonoBehaviour
@@ -9,11 +10,15 @@ public class BallDirectionController : MonoBehaviour
     public GameObject mouse;
     public LineRenderer dottedLineRenderer;
     private Quaternion start_rotation = Quaternion.AngleAxis(0, Vector3.forward);
+    private float timer;
+    private float spriteGap = 0.1f;
+    private bool timer_start = false;
 
+    //private Vector3 power_position = new Vector3(-Screen.width / 2 + 2f, Screen.height - 1, 0f);
     private Rigidbody2D rb;
 
     private bool direction_ready = false;
-    public float magnitude = 25;
+    float magnitude = 0;
     public float scaleFactor = 2;
     public GameObject speedBars;
 
@@ -22,6 +27,7 @@ public class BallDirectionController : MonoBehaviour
     {
         transform.rotation = start_rotation;
         rb = GetComponent<Rigidbody2D>();
+        dottedLineRenderer.enabled = true;
     }
 
     // Update is called once per frame
@@ -37,23 +43,30 @@ public class BallDirectionController : MonoBehaviour
         Vector2 ball_direction = mouse_pos - ball_pos;
         ball_direction.Normalize();
 
-        dottedLineRenderer.enabled = true;
-
         float angle_rad = Mathf.Atan2(ball_direction.y, ball_direction.x);
         float angle_deg = Mathf.Rad2Deg * angle_rad - 90;
 
         transform.rotation = Quaternion.AngleAxis(angle_deg, Vector3.forward);
 
-
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             direction_ready = true;
-            Instantiate(speedBars, new Vector3(-7.24f, 4.47f, 0.0f), Quaternion.identity);
+            Instantiate(speedBars, new Vector3(-6f, 3f, 0f), Quaternion.identity);
+            timer_start = true;
+        }
+
+        if (timer_start)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                magnitude += 0.5f;
+                timer = spriteGap;
+            }
         }
 
         if (direction_ready == true && Input.GetKeyUp(KeyCode.Mouse0))
         {
-            magnitude = speedBars.GetComponent<PowerArrow>().getMagnitude() * scaleFactor;
             Vector2 movement = new Vector2(ball_direction.x * magnitude, ball_direction.y * magnitude);
             rb.velocity = movement;
         }

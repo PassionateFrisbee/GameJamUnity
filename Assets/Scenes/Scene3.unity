@@ -340,8 +340,7 @@ MonoBehaviour:
   dottedLineRenderer: {fileID: 2101126265}
   magnitude: 10
   scaleFactor: 2
-  speedBars: {fileID: 8064363796873561910, guid: d39d06e155e044a0d8c74f7ed6b3e4d1, type: 3}
-  barPosition: {x: -7.24, y: 4.47, z: 0}
+  speedBars: {fileID: 2667286359281301438, guid: 10823a20f84f246369d4723f3ea1b862, type: 3}
 --- !u!4 &570130419 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1525879282457845230, guid: b52e2832b5bd483459740c7838f0cae7, type: 3}
