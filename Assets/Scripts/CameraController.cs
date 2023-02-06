@@ -14,6 +14,15 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(ball.transform.position.x, ball.transform.position.y, -40);
+        GameObject ball = GameObject.Find("Ball");
+
+        Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        if(ball.gameObject.transform.position.y > 5) {
+            newPosition.y = ball.gameObject.transform.position.y - 5;
+            transform.position = newPosition;
+        }
+    
     }
+
+    
 }

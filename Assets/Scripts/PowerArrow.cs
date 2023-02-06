@@ -8,13 +8,24 @@ public class PowerArrow : MonoBehaviour
     SpriteRenderer sr;
     int currentFrameIndex;
     private float timer;
-    private float spriteGap = 0.4f;
+    public float spriteGap = 0.2f;
+    //private GameObject ball;
+
+    private GameObject cam;
 
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         currentFrameIndex = 0;
+        cam = GameObject.Find("Main Camera");
+        transform.parent = cam.transform;
+        // ball = GameObject.Find("Ball");
+        // transform.parent = ball.transform;
     }
+
+    // void FixedUpdate() {
+    //     transform.position = new Vector3(ball.transform.position.x - 3, transform.position.y, transform.position.z);
+    // }
 
     void Update()
     {
