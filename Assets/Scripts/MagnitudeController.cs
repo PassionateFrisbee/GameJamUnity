@@ -9,6 +9,7 @@ public class MagnitudeController : MonoBehaviour
     public float scaleFactor = 10;
     public GameObject speedBars;
     PowerArrow arrow;
+    public Vector3 barPosition;
 
     void Start()
     {
@@ -20,8 +21,8 @@ public class MagnitudeController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             ready = true;
-            //change location to where this is instantiated! (maybe a little to left of where ball is?)
-            Instantiate(speedBars, transform.position, Quaternion.identity);
+            barPosition = new Vector3(0, -4, 0) + transform.position;
+            Instantiate(speedBars, barPosition, Quaternion.identity);
         }
 
         else if (ready == true)
