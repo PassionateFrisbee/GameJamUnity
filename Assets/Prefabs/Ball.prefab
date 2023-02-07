@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dottedLineStart: {fileID: 2101126264}
-  mouse: {fileID: 0}
+  mouse: {fileID: 1462768320914441267, guid: cb924fc8ac4f34cf0abc1d263d5e9538, type: 3}
   dottedLineRenderer: {fileID: 2101126265}
   spriteGap: 0.2
   scaleFactor: 2
