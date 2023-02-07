@@ -58,7 +58,6 @@ public class BallDirectionController : MonoBehaviour
             Instantiate(speedBars,
                         new Vector3(restartbutton.transform.position.x + 4, restartbutton.transform.position.y - 5.0f, restartbutton.transform.position.z),
                         Quaternion.identity);
-            //speedBars.transform.parent = cam.transform;
 
             timer_start = true;
         }
@@ -75,7 +74,7 @@ public class BallDirectionController : MonoBehaviour
 
         if (direction_ready == true && Input.GetKeyUp(KeyCode.Mouse0))
         {
-            magnitude %= 27.5f;
+            magnitude %= 30f;
             Vector2 movement = new Vector2(ball_direction.x * magnitude, ball_direction.y * magnitude);
             rb.velocity = movement;
 
