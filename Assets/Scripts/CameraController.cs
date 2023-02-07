@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour
 
         Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         //if(ball.gameObject.transform.position.y > -10 ) {
-            newPosition.y = ball.gameObject.transform.position.y + 8;
+            //newPosition.y = ball.gameObject.transform.position.y + 8;
         //}
 
         // if(ball.gameObject.transform.position.y < -5 ) {
