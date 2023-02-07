@@ -529,6 +529,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RestartButton
       objectReference: {fileID: 0}
+    - target: {fileID: 2752776413864649113, guid: 82fd00f4470fecc4388586a7222d8ca0, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2752776413864649118, guid: 82fd00f4470fecc4388586a7222d8ca0, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1632,7 +1636,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 12
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

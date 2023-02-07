@@ -14,45 +14,62 @@ public class BallDirectionController : MonoBehaviour
     public float spriteGap = 0.2f;
     private bool timer_start = false;
 
-    //private Vector3 power_position = new Vector3(-Screen.width / 2 + 2f, Screen.height - 1, 0f);
     private Rigidbody2D rb;
 
     private bool direction_ready = false;
+
     float magnitude = 2.5f;
     public GameObject speedBars;
+
     public bool canJump;
 
     public GameObject restartbutton;
 
-    public GameObject cam;
+    public AudioClip clip;
+    private AudioSource source;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //dottedLineRenderer.enabled = true;
         canJump = true;
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector3 mouse_position = GetMouseWorldPosition();
-        UpdateMouse(mouse_position);
+        //UpdateMouse(mouse_position);
 
-        Vector2 dottedLine_pos = dottedLineStart.transform.position;
-        Vector2 mouse_pos = mouse.transform.position;
-        Vector2 ball_direction = mouse_pos - dottedLine_pos;
+        Vector3 ball_pos = transform.position;
+        //Vector2 dottedLine_pos = dottedLineStart.transform.position;
+        //Vector2 mouse_pos = mouse.transform.position;
+        // Vector2 mouse_direction = mouse_pos - dottedLine_pos; **possible raycasting
+        //Vector2 ball_direction = mouse_pos - ball_pos;
+
+        Vector3 ball_direction = mouse_position - ball_pos;
+
 
         ball_direction.Normalize();
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && canJump)
         {
             direction_ready = true;
+            //Instantiate(speedBars, new Vector3(-6f, 3f, 0f), Quaternion.identity);
 
-            Instantiate(speedBars,
+            GameObject speedbars = Instantiate(speedBars,
                         new Vector3(restartbutton.transform.position.x + 4, restartbutton.transform.position.y - 5.0f, restartbutton.transform.position.z),
                         Quaternion.identity);
+            //speedBars.transform.parent = cam.transform;
+
+            //  GameObject speedbars = Instantiate(speedBars,
+            //              new Vector3(transform.position.x - 3, transform.position.y, transform.position.z),
+            //              Quaternion.identity);
+
+            //GameObject ball = GameObject.Find("Ball");
+            //speedBars.transform.parent = ball.transform;
 
             timer_start = true;
         }
@@ -62,7 +79,7 @@ public class BallDirectionController : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-                magnitude += 2.5f;
+                magnitude += 2.2f;
                 timer = spriteGap;
             }
         }
@@ -79,6 +96,8 @@ public class BallDirectionController : MonoBehaviour
             timer_start = false;
             timer = 0.2f;
 
+            Debug.Log(source);
+            source.PlayOneShot(clip);
         }
 
     }
@@ -93,11 +112,11 @@ public class BallDirectionController : MonoBehaviour
         return mouseWorldPos;
     }
 
-    void UpdateMouse(Vector3 newMousePosition)
-    {
-        mouse.transform.position = newMousePosition;
-        dottedLineRenderer.SetPosition(0, dottedLineStart.transform.position);
-        dottedLineRenderer.SetPosition(1, mouse.transform.position);
-    }
+    //void UpdateMouse(Vector3 newMousePosition)
+    //{
+        //mouse.transform.position = newMousePosition;
+        //dottedLineRenderer.SetPosition(0, dottedLineStart.transform.position);
+        //dottedLineRenderer.SetPosition(1, mouse.transform.position);
+    //}
 
 }
