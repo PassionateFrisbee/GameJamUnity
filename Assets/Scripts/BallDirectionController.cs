@@ -28,6 +28,7 @@ public class BallDirectionController : MonoBehaviour
     public AudioClip clip;
     private AudioSource source;
 
+    public GameObject cam;
 
     // Start is called before the first frame update
     void Start()
@@ -41,15 +42,11 @@ public class BallDirectionController : MonoBehaviour
     void Update()
     {
         Vector3 mouse_position = GetMouseWorldPosition();
-        //UpdateMouse(mouse_position);
+        UpdateMouse(mouse_position);
 
-        Vector3 ball_pos = transform.position;
-        //Vector2 dottedLine_pos = dottedLineStart.transform.position;
-        //Vector2 mouse_pos = mouse.transform.position;
-        // Vector2 mouse_direction = mouse_pos - dottedLine_pos; **possible raycasting
-        //Vector2 ball_direction = mouse_pos - ball_pos;
-
-        Vector3 ball_direction = mouse_position - ball_pos;
+        Vector2 dottedLine_pos = dottedLineStart.transform.position;
+        Vector2 mouse_pos = mouse.transform.position;
+        Vector2 ball_direction = mouse_pos - dottedLine_pos;
 
 
         ball_direction.Normalize();
@@ -57,19 +54,11 @@ public class BallDirectionController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && canJump)
         {
             direction_ready = true;
-            //Instantiate(speedBars, new Vector3(-6f, 3f, 0f), Quaternion.identity);
 
-            GameObject speedbars = Instantiate(speedBars,
+            Instantiate(speedBars,
                         new Vector3(restartbutton.transform.position.x + 4, restartbutton.transform.position.y - 5.0f, restartbutton.transform.position.z),
                         Quaternion.identity);
-            //speedBars.transform.parent = cam.transform;
-
-            //  GameObject speedbars = Instantiate(speedBars,
-            //              new Vector3(transform.position.x - 3, transform.position.y, transform.position.z),
-            //              Quaternion.identity);
-
-            //GameObject ball = GameObject.Find("Ball");
-            //speedBars.transform.parent = ball.transform;
+            speedBars.transform.parent = cam.transform;
 
             timer_start = true;
         }
@@ -112,11 +101,11 @@ public class BallDirectionController : MonoBehaviour
         return mouseWorldPos;
     }
 
-    //void UpdateMouse(Vector3 newMousePosition)
-    //{
-        //mouse.transform.position = newMousePosition;
-        //dottedLineRenderer.SetPosition(0, dottedLineStart.transform.position);
-        //dottedLineRenderer.SetPosition(1, mouse.transform.position);
-    //}
+    void UpdateMouse(Vector3 newMousePosition)
+    {
+        mouse.transform.position = newMousePosition;
+        dottedLineRenderer.SetPosition(0, dottedLineStart.transform.position);
+        dottedLineRenderer.SetPosition(1, mouse.transform.position);
+    }
 
 }
