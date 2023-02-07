@@ -70,7 +70,7 @@ public class BallDirectionController : MonoBehaviour
 
         if (direction_ready == true && Input.GetKeyUp(KeyCode.Mouse0))
         {
-            magnitude %= 27.5f;
+            magnitude %= 30f;
             Vector2 movement = new Vector2(ball_direction.x * magnitude, ball_direction.y * magnitude);
             rb.velocity = movement;
 
