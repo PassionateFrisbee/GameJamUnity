@@ -19,6 +19,9 @@ public class JumpZone : MonoBehaviour
             if(bdc != null) {
                 bdc.canJump = true;
             }
+            Rigidbody2D rb = other.gameObject.GetComponent<Rigidbody2D>();
+            if(rb != null)
+                rb.drag = 1;
         }
     }
 
@@ -37,6 +40,9 @@ public class JumpZone : MonoBehaviour
             if(bdc != null) {
                 bdc.canJump = false;
             }
+            Rigidbody2D rb = other.gameObject.GetComponent<Rigidbody2D>();
+            if(rb != null)
+                rb.drag = 0;
         }
     }
 }
