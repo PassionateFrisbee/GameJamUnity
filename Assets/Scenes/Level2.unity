@@ -841,9 +841,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 570130415, guid: b52e2832b5bd483459740c7838f0cae7, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1837094450}
+    - target: {fileID: 570130415, guid: b52e2832b5bd483459740c7838f0cae7, type: 3}
       propertyPath: mouse
       value: 
       objectReference: {fileID: 1604270328}
+    - target: {fileID: 570130415, guid: b52e2832b5bd483459740c7838f0cae7, type: 3}
+      propertyPath: restartbutton
+      value: 
+      objectReference: {fileID: 1837094450}
     - target: {fileID: 493734538076999492, guid: b52e2832b5bd483459740c7838f0cae7, type: 3}
       propertyPath: restartbutton
       value: 
