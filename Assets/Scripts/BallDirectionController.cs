@@ -19,7 +19,6 @@ public class BallDirectionController : MonoBehaviour
 
     private bool direction_ready = false;
     float magnitude = 2.5f;
-    public float scaleFactor = 2;
     public GameObject speedBars;
     public bool canJump;
 
