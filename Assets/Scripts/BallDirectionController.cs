@@ -14,7 +14,6 @@ public class BallDirectionController : MonoBehaviour
     public float spriteGap = 0.2f;
     private bool timer_start = false;
 
-    //private Vector3 power_position = new Vector3(-Screen.width / 2 + 2f, Screen.height - 1, 0f);
     private Rigidbody2D rb;
 
     private bool direction_ready = false;
@@ -30,7 +29,6 @@ public class BallDirectionController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //dottedLineRenderer.enabled = true;
         canJump = true;
     }
 
