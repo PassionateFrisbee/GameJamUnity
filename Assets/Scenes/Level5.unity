@@ -968,6 +968,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 559557580417635631, guid: 63f9246d3a108b649b6fb508479f0da4, type: 3}
+      propertyPath: nextScene
+      value: Level1
+      objectReference: {fileID: 0}
     - target: {fileID: 6517111467123964734, guid: 63f9246d3a108b649b6fb508479f0da4, type: 3}
       propertyPath: m_Name
       value: Victory Flag
