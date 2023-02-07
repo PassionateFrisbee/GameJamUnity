@@ -68,14 +68,14 @@ public class BallDirectionController : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-                magnitude += 2.2f;
+                magnitude += 2.5f;
                 timer = spriteGap;
             }
         }
 
         if (direction_ready == true && Input.GetKeyUp(KeyCode.Mouse0))
         {
-            magnitude %= 30f;
+            magnitude %= 27.5f;
             Vector2 movement = new Vector2(ball_direction.x * magnitude, ball_direction.y * magnitude);
             rb.velocity = movement;
 
