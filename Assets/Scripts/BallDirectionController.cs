@@ -18,7 +18,7 @@ public class BallDirectionController : MonoBehaviour
     private Rigidbody2D rb;
 
     private bool direction_ready = false;
-    float magnitude = 0;
+    float magnitude = 2.2f;
     public float scaleFactor = 2;
     public GameObject speedBars;
 
@@ -55,7 +55,7 @@ public class BallDirectionController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && canJump)
         {
             direction_ready = true;
-            Instantiate(speedBars, new Vector3(-6f, 3f, 0f), Quaternion.identity);
+            //Instantiate(speedBars, new Vector3(-6f, 3f, 0f), Quaternion.identity);
 
             //GameObject speedbars = Instantiate(speedBars,
             //            new Vector3(restartbutton.transform.position.x + 4, restartbutton.transform.position.y - 5.0f, restartbutton.transform.position.z),
@@ -88,6 +88,7 @@ public class BallDirectionController : MonoBehaviour
             Vector2 movement = new Vector2(ball_direction.x * magnitude, ball_direction.y * magnitude);
             rb.velocity = movement;
             magnitude = 0.0f;
+
             canJump = false;
             direction_ready = false;
             timer_start = false;
