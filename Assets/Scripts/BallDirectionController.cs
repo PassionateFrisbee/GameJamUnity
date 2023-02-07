@@ -18,7 +18,7 @@ public class BallDirectionController : MonoBehaviour
     private Rigidbody2D rb;
 
     private bool direction_ready = false;
-    float magnitude = 2.2f;
+    float magnitude = 2.5f;
     public float scaleFactor = 2;
     public GameObject speedBars;
     public bool canJump;
@@ -73,8 +73,8 @@ public class BallDirectionController : MonoBehaviour
             magnitude %= 27.5f;
             Vector2 movement = new Vector2(ball_direction.x * magnitude, ball_direction.y * magnitude);
             rb.velocity = movement;
-            magnitude = 0.0f;
 
+            magnitude = 2.5f;
             canJump = false;
             direction_ready = false;
             timer_start = false;
