@@ -89,13 +89,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8934511c4527ff3428965058df8e8e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite1: {fileID: 468347460, guid: e6df67cf8577846cc9101a94b9e313f1, type: 3}
-  sprite2: {fileID: -676868033, guid: e6df67cf8577846cc9101a94b9e313f1, type: 3}
-  sprite3: {fileID: 1496326150, guid: e6df67cf8577846cc9101a94b9e313f1, type: 3}
-  sprite4: {fileID: -1420745621, guid: e6df67cf8577846cc9101a94b9e313f1, type: 3}
-  sprite5: {fileID: -350929350, guid: e6df67cf8577846cc9101a94b9e313f1, type: 3}
-  sprite6: {fileID: -1708875890, guid: e6df67cf8577846cc9101a94b9e313f1, type: 3}
-  spriteTimer: 0.1
+  frames:
+  - {fileID: 468347460, guid: e6df67cf8577846cc9101a94b9e313f1, type: 3}
+  - {fileID: -676868033, guid: e6df67cf8577846cc9101a94b9e313f1, type: 3}
+  - {fileID: 1496326150, guid: e6df67cf8577846cc9101a94b9e313f1, type: 3}
+  - {fileID: -1420745621, guid: e6df67cf8577846cc9101a94b9e313f1, type: 3}
+  - {fileID: -350929350, guid: e6df67cf8577846cc9101a94b9e313f1, type: 3}
+  - {fileID: -1708875890, guid: e6df67cf8577846cc9101a94b9e313f1, type: 3}
+  fps: 3
 --- !u!212 &8835913189220475370
 SpriteRenderer:
   m_ObjectHideFlags: 0

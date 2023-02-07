@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ball
   - Bar
+  - UI
   layers:
   - Default
   - TransparentFX
