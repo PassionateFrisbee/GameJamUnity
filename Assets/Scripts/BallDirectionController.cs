@@ -58,7 +58,7 @@ public class BallDirectionController : MonoBehaviour
             Instantiate(speedBars,
                         new Vector3(restartbutton.transform.position.x + 4, restartbutton.transform.position.y - 5.0f, restartbutton.transform.position.z),
                         Quaternion.identity);
-            speedBars.transform.parent = cam.transform;
+            //speedBars.transform.parent = cam.transform;
 
             timer_start = true;
         }
