@@ -18,8 +18,12 @@ public class BallDirectionController : MonoBehaviour
     private Rigidbody2D rb;
 
     private bool direction_ready = false;
+<<<<<<< HEAD
     float magnitude = 0;
     public float scaleFactor = 2;
+=======
+    float magnitude = 2.5f;
+>>>>>>> 7f2729465cb4d59d4b5ac7647ae6495249b36c85
     public GameObject speedBars;
 
     public bool canJump;
@@ -88,9 +92,17 @@ public class BallDirectionController : MonoBehaviour
 
         if (direction_ready == true && Input.GetKeyUp(KeyCode.Mouse0))
         {
+<<<<<<< HEAD
             Vector2 movement = new Vector2(ball_direction.x * magnitude, ball_direction.y * magnitude);
             rb.velocity = movement;
             magnitude = 0.0f;
+=======
+            magnitude %= 30f;
+            Vector2 movement = new Vector2(ball_direction.x * magnitude, ball_direction.y * magnitude);
+            rb.velocity = movement;
+
+            magnitude = 2.5f;
+>>>>>>> 7f2729465cb4d59d4b5ac7647ae6495249b36c85
             canJump = false;
             direction_ready = false;
             timer_start = false;
