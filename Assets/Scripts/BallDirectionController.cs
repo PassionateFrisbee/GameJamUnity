@@ -21,12 +21,11 @@ public class BallDirectionController : MonoBehaviour
     float magnitude = 2.2f;
     public float scaleFactor = 2;
     public GameObject speedBars;
-
     public bool canJump;
 
     public GameObject restartbutton;
 
-    //public GameObject cam;
+    public GameObject cam;
 
     // Start is called before the first frame update
     void Start()
@@ -42,32 +41,19 @@ public class BallDirectionController : MonoBehaviour
         Vector3 mouse_position = GetMouseWorldPosition();
         UpdateMouse(mouse_position);
 
-        Vector3 ball_pos = transform.position;
         Vector2 dottedLine_pos = dottedLineStart.transform.position;
         Vector2 mouse_pos = mouse.transform.position;
-        //Vector2 mouse_direction = mouse_pos - dottedLine_pos; **possible raycasting
         Vector2 ball_direction = mouse_pos - dottedLine_pos;
-
-        //Vector3 ball_direction = mouse_position - ball_pos;
 
         ball_direction.Normalize();
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && canJump)
         {
             direction_ready = true;
-            //Instantiate(speedBars, new Vector3(-6f, 3f, 0f), Quaternion.identity);
 
-            //GameObject speedbars = Instantiate(speedBars,
-            //            new Vector3(restartbutton.transform.position.x + 4, restartbutton.transform.position.y - 5.0f, restartbutton.transform.position.z),
-            //            Quaternion.identity);
-            //speedBars.transform.parent = cam.transform;
-
-            //  GameObject speedbars = Instantiate(speedBars,
-            //              new Vector3(transform.position.x - 3, transform.position.y, transform.position.z),
-            //              Quaternion.identity);
-
-            //GameObject ball = GameObject.Find("Ball");
-            //speedBars.transform.parent = ball.transform;
+            Instantiate(speedBars,
+                        new Vector3(restartbutton.transform.position.x + 4, restartbutton.transform.position.y - 5.0f, restartbutton.transform.position.z),
+                        Quaternion.identity);
 
             timer_start = true;
         }
@@ -77,14 +63,14 @@ public class BallDirectionController : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-                magnitude += 2.2f;
+                magnitude += 2.5f;
                 timer = spriteGap;
             }
         }
 
         if (direction_ready == true && Input.GetKeyUp(KeyCode.Mouse0))
         {
-            magnitude %= 22;
+            magnitude %= 27.5f;
             Vector2 movement = new Vector2(ball_direction.x * magnitude, ball_direction.y * magnitude);
             rb.velocity = movement;
             magnitude = 0.0f;
